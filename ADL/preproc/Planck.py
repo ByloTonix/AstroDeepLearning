@@ -87,11 +87,11 @@ def normalize_asym(
 
     # Replace outliers with the closest appropriate value
     idx = (dev > outlier_thr) & (result < med)
-    if any(idx):
+    if np.any(idx):
         mask_val = result[~idx].min()
         result[idx] = mask_val
     idx = (dev > outlier_thr) & (result > med)
-    if any(idx):
+    if np.any(idx):
         mask_val = result[~idx].max()
         result[idx] = mask_val
     return result
